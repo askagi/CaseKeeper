@@ -1,0 +1,17 @@
+.login-page {
+  max-height: 100%;
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    // width: calc(50% - 2rem);
+    padding-inline: 2rem;
+
+    .ant-form-item,
+    .ant-btn {
+      min-width: calc(50% - 2rem);
+    }
+  }
+}
