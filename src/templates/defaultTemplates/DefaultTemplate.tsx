@@ -1,6 +1,6 @@
-import { Link, Outlet, useNavigate, useParams, useRouter, useRouterState } from "@tanstack/react-router";
+import {  Outlet, useNavigate,  useRouterState } from "@tanstack/react-router";
 import { Layout, Menu, MenuProps } from "antd";
-import { FC, useEffect, useState } from "react";
+import { FC,  useState } from "react";
 import Suitcase from "../../assets/suitcase.png";
 import { DashboardRoute } from "../../routes/Dashboard.route";
 import { ProcessRoute } from "../../routes/Process.route";
