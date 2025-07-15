@@ -1,12 +1,22 @@
-import { Outlet, useNavigate } from "@tanstack/react-router";
-import { Layout, Menu } from "antd";
-import { FC } from "react";
+import { Link, Outlet, useNavigate, useParams, useRouter, useRouterState } from "@tanstack/react-router";
+import { Layout, Menu, MenuProps } from "antd";
+import { FC, useEffect, useState } from "react";
 import Suitcase from "../../assets/suitcase.png";
 import { DashboardRoute } from "../../routes/Dashboard.route";
 import { ProcessRoute } from "../../routes/Process.route";
 import "./defaultTemplate.scss";
+
+
 export const DefaultTemplate: FC = () => {
   const navigate = useNavigate();
+  const routerState = useRouterState();
+  const [currentPath, setCurrentPath] = useState(routerState.location.pathname.replace('/',''))
+  
+
+  const handleNavigate: MenuProps['onClick']  = (event) => {
+    setCurrentPath(event.key)
+  }
+
   return (
     <Layout className="default-template">
       <Layout.Sider>
@@ -15,26 +25,28 @@ export const DefaultTemplate: FC = () => {
         {/* </div> */}
         <Menu
           theme="dark"
+          selectedKeys={[currentPath]}
+          onClick={handleNavigate}
           items={[
             {
-              key: "1",
+              key: "dashboard",
               label: "Dashboard",
               onClick: () => navigate({ to: DashboardRoute.to }),
             },
             {
-              key: "2",
+              key: "process",
               label: "Processos",
               type: "group",
               children: [
                 {
-                  key: "2.1",
+                  key: "process",
                   label: "Listar",
                   onClick: () => navigate({ to: ProcessRoute.to }),
                 },
               ],
             },
             {
-              key: "3",
+              key: "register",
               label: "Cadastrar",
               type: "group",
               children: [
